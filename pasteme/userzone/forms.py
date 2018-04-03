@@ -1,5 +1,5 @@
 from django import forms
-from .models import Paste, Role, User
+from .models import Paste
 
 
 class NameForm(forms.Form):
