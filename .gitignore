@@ -1,4 +1,6 @@
 *.pyc
-__pycache__/
-.ided/*
-.vscode/*
+*/__pycache__/
+.idea/*
+*/.vscode/
+.vscode/
+settings.py
