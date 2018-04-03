@@ -1,0 +1,31 @@
+{% extends 'userzone/base.html' %}
+
+{% block headercontent %}
+<section class="content-header">
+  <h1>
+    {{ create_paste_title }}
+
+    <small>{{ create_paste_sub_title }}</small>
+  </h1>
+</section>
+{% endblock %}
+
+{% block maincontent %}
+  <section class="content">
+  <div class="box box-warning">
+     <div class="box-header with-border">
+       <h3 class="box-title">Detail</h3>
+     </div>
+     <!-- /.box-header -->
+     <div class="box-body">
+       <form role="form">
+         <!-- textarea -->
+         <div class="form-group">
+           <label>Content paste</label>
+           <textarea class="form-control" rows="10" placeholder="Enter ..."></textarea>
+         </div>
+       </form>
+     </div>
+  <!-- /.box -->
+</section>
+{% endblock %}
