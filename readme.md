@@ -17,6 +17,6 @@ PasteME là một website cho phép người dùng lưu trữ các mẫu văn b�
 ![](docs/images/trangchu-3.PNG)
 > Trang cá nhân User
 
-## Cài đặt
+## Cài đặt, cấu trúc Project
 
-(Đang chờ)
+(Đang chuẩn bị)
