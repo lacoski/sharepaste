@@ -1,0 +1,8 @@
+<div class="list-group">
+    {% for paste in list_pastes %}
+    <a href="{% url 'review_paste_guest_template' paste.short_link %}" class="list-group-item">      
+        <p class="font-weight-bold">{{paste.paste_name}}</p>
+        <small>{{paste.time_create}}</small>                 
+    </a>
+    {% endfor %}
+</div>   

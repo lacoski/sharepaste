@@ -1,16 +1,19 @@
-{% extends 'userzone/base.html' %}
+{% extends 'userzone/base_guest.html' %} 
+{% load helper_base_template %}
 {% load static %}
 {% block scrlink %}
 <link rel="stylesheet" href="{% static 'userzone/highlight/styles/default.css' %}">
+
 {% endblock %}
 
 {% block scrscript %}
 <script src="{% static 'userzone/highlight/highlight.pack.js' %}"></script>
+
 <script>hljs.initHighlightingOnLoad();</script>
 <script>   
     function saveTextAsFile()
     {
-        var textToWrite = `{{content_paste}}`
+        var textToWrite = `{{str_content}}`
         var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
         var fileNameToSaveAs = `{{paste.short_link}}`
 
@@ -42,45 +45,40 @@
     }
 </script>
 {% endblock %}
-
-
 {% block headercontent %}
-<section class="content-header">
-  <h1>
-    {{ title }}
 
-    <small>{{ sub_title }}</small>
-  </h1>
-</section>
-{% endblock %}
-
+{% endblock %} 
 {% block maincontent %}
 <section class="content">
-<div class="box box-primary">
-    <div class="box-header with-border">
-        <h3 class="box-title">Review Code</h3>
-        <div class="box-tools pull-right">
-            <a type="button" class="btn btn-default" data-toggle="modal" data-target="#copyToPastePopup"><i class="fa fa-share"></i></a>
-            <a type="button" class="btn btn-default" onclick="saveTextAsFile()"><i class="fa fa-download"></i></a>
-            <a href={% url 'review_paste_template' paste.short_link %} type="button" class="btn btn-default"><i class="fa fa-eye"></i></a>     
-            <a href={% url 'update_paste_template' paste.id %} type="button" class="btn btn-default"><i class="fa fa-edit"></i></a>
-            <a href={% url 'delete_paste_template' paste.id %} type="button" class="btn btn-default"><i class="fa fa-remove"></i></a>   
+    <div class="row">
+        <div class="col-md-10">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Review Code</h3>
+                    <div class="box-tools pull-right">
+                        <a type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" ><i class="fa fa-share"></i></a>
+                        <a type="button" class="btn btn-default" onclick="saveTextAsFile()"><i class="fa fa-download"></i></a>
+                    </div>
+                </div>
+                             
+                <div class="box-body">  
+                    <pre>
+                        <code id="target_download" class="{{paste.type_content_paste}}">{{ content_paste }}</code>
+                    </pre> 
+                </div>
+                <div class="box-footer">
+                    <a href="{% url 'create_paste_guest_template' %}" class="btn btn-primary">Back</a>           
+                </div>                     
+                
+            </div>
         </div>
+        <div class="col-md-2">
+                {% Public_Pastes %}
+        </div>
+            
     </div>
-    
-    
-    <div class="box-body">  
-        <pre>
-            <code class="{{paste.type_content_paste}}">{{ content_paste }}</code>
-        </pre> 
-    </div>
-    <div class="box-footer">
-        <a href="{% url 'index_page' %}" class="btn btn-primary">Back</a>           
-    </div>                     
-    
-</div>
-<!-- Share popup -->
-<div class="modal fade" id="copyToPastePopup" role="dialog">
+    <!-- Share popup -->
+    <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog modal-sm">
         
         <!-- Modal content -->
@@ -108,4 +106,5 @@
         </div>
     </div>
 </section>
+
 {% endblock %}

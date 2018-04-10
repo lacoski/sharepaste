@@ -4,6 +4,7 @@ from django.utils.crypto import get_random_string
 
 # Create your models here.
 
+
 class Paste(models.Model):
 
     paste_name = models.CharField(max_length=200)

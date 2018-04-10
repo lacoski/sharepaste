@@ -1,0 +1,52 @@
+{% extends 'userzone/base_guest.html' %} 
+{% load helper_base_template %}
+{% load static %}
+{% block scrlink %}
+<link rel="stylesheet" href="{% static 'userzone/highlight/styles/default.css' %}">
+{% endblock %}
+
+{% block scrscript %}
+<script src="{% static 'userzone/highlight/highlight.pack.js' %}"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+{% endblock %}
+{% block headercontent %}
+<!-- <section class="content-header">
+  <h1>
+    Create new paste
+    <small>Release 1.0</small>
+  </h1>
+  
+</section> -->
+{% endblock %} 
+{% block maincontent %}
+<section class="content">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Review Code</h3>
+                    <div class="box-tools pull-right">
+                        <a href="#" type="button" class="btn btn-default"><i class="fa fa-share"></i></a>
+                        <a href="#" type="button" class="btn btn-default"><i class="fa fa-download"></i></a>
+                    </div>
+                </div>
+                                
+                <div class="box-body">  
+                    <pre>
+                        <code class="{{paste.type_content_paste}}">{{ content }}</code>
+                    </pre> 
+                </div>
+                <div class="box-footer">
+                    <a href="{% url 'create_paste_guest_template' %}" class="btn btn-primary">Back</a>           
+                </div>                     
+                
+            </div>
+        </div>
+        <div class="col-md-2">
+                {% Public_Pastes %}
+        </div>
+            
+    </div>
+
+</section>
+{% endblock %}

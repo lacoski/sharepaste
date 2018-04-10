@@ -1,0 +1,62 @@
+{% extends 'userzone/base_guest.html' %} 
+{% load helper_base_template %}
+
+{% block headercontent %}
+<!-- <section class="content-header">
+  <h1>
+    Create new paste
+    <small>Release 1.0</small>
+  </h1>
+  
+</section> -->
+{% endblock %} 
+{% block maincontent %}
+<section class="content">
+  <div class="row">
+    <div class="col-md-10">
+        <div class="box box-warning">
+            <div class="box-header with-border">
+              <h3 class="box-title">Information</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <form role="form" method="POST">                
+                <!-- {{ form.paste_name }} -->
+                <div class="form-group">
+                  <label>Paste Name</label>
+                  {{form.paste_name}}
+                </div>
+                <div class="form-group">
+                  <label>Typepaste</label>
+                  <select name="type_content_paste" id="id_type_content_paste" maxlength="200" class="form-control">
+                    {% if paste.type_content_paste is none %}
+                    <option value="" selected=""></option>
+                    {% else %}
+                    <option value="{{paste.type_content_paste}}">{{paste.type_content_paste}}</option>
+                    {% endif %} 
+                    {% for item in list_syntax %}
+                    <option value="{{item}}">{{item}}</option>
+                    {% endfor %}
+                  </select>
+                </div>      
+                <div class="form-group">
+                  <label>Content paste</label>
+                  <textarea name="content_paste" required="" cols="40" class="form-control" id="id_content_paste" rows="10"></textarea>
+                  <!--<textarea class="form-control" rows="10" placeholder="Enter ..."></textarea>-->
+                </div>                
+      
+                <div class="box-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+    </div>
+    <div class="col-md-2" >
+        {% Public_Pastes %}
+    </div>
+  </div>
+
+    <!-- /.box -->
+</section>
+{% endblock %}
