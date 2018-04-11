@@ -27,6 +27,8 @@ PasteME là một website cho phép người dùng lưu trữ các mẫu văn b�
 ![](docs/images/trangchu-6.PNG)
 > Tool tại client (Linux)
 
-## Cài đặt, cấu trúc Project
+## Cấu trúc, triển khai Project
 
-(Đang chuẩn bị)
+### [Triển khai Project tại local](docs/setup-project.md)
+
+### Triển khai Project production (đang viết)
