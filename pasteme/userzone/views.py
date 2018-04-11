@@ -65,7 +65,10 @@ def create_paste_template(request):
         obj.save()
         content = request.POST.get('content_paste')
         target = Paste.objects.get(id=obj.id)     
-        FileIO.writeToFile(content, target.short_link)           
+        try:
+            FileIO.writeToFile(content, target.short_link)           
+        except IOError:
+            return redirect('index_page')
         return redirect('review_paste_template', id=target.short_link)
 
     return render(request, 'userzone/paste_create.html', {'form': form, 'title':'Create Paste', 
@@ -76,13 +79,20 @@ def update_paste_template(request,id):
     #Paste_ = Paste.objects.get(id=id)   
     Paste_ = get_object_or_404(Paste, id=id) 
     list_syntax = SUPPORT_LANGUAGE
-    form = PasteFileForm(request.POST or None, instance=Paste_)
-    content = FileIO.readFile(Paste_.short_link)  
-
+    form = PasteFileForm(request.POST or None, instance=Paste_)  
+    content = ''  
+    try:
+        content = FileIO.readFile(Paste_.short_link)  
+    except IOError:
+        return redirect('index_page')    
     if form.is_valid():
         form.save()        
-        content = request.POST.get('content_paste')        
-        FileIO.writeToFile(content, Paste_.short_link)
+        content = request.POST.get('content_paste')    
+        try:
+            FileIO.writeToFile(content, target.short_link)           
+        except IOError:
+            return redirect('index_page')    
+        #FileIO.writeToFile(content, Paste_.short_link)
 
         return redirect('review_paste_template', id=Paste_.short_link)
     return render(request, 'userzone/paste_create.html', {'form': form, 'paste': Paste_, 'title':'Update Paste' ,
@@ -103,7 +113,11 @@ def delete_paste_template(request,id):
 def review_paste_template(request,id):
     Paste_ = get_object_or_404(Paste, short_link=id)
     #Paste_ = Paste.objects.get(short_link=id)  
-    content = FileIO.readFile(Paste_.short_link)  
+    content = ''
+    try:
+        content = FileIO.readFile(Paste_.short_link)          
+    except IOError:
+        return redirect('index_page')  
     return render(request, 'userzone/paste_review.html', {'paste': Paste_, 'title':'Review Paste' ,
                                                         'sub_title':'See your code', 'content_paste':content})
 
@@ -118,7 +132,10 @@ def create_paste_guest_template(request):
 
         content_paste = request.POST.get('content_paste')
         #print(content_paste)
-        FileIO.writeToFile(content_paste, target.short_link)        
+        try:
+            FileIO.writeToFile(content_paste, target.short_link)        
+        except IOError:
+            return redirect('index_page') 
 
         return redirect('review_paste_guest_template', id=target.short_link)
     return render(request, 'userzone/paste_create_guest.html', {'form': form, 'title':'Create Paste', 
@@ -143,7 +160,11 @@ def create_paste_tool_guest_template(request):
 def review_paste_guest_template(request,id):
     Paste_ = get_object_or_404(Paste, short_link=id)
     #Paste_ = Paste.objects.get(short_link=id)    
-    content= FileIO.readFile(Paste_.short_link)    
+    content = ''
+    try:
+        content = FileIO.readFile(Paste_.short_link)       
+    except IOError:
+        return redirect('index_page')  
     str_content = str(content)
     return render(request, 'userzone/paste_review_guest.html', {'paste': Paste_, 'title':'Review Paste' ,'sub_title':'See your code', 
                                                                 'content_paste':content, 'str_content': str_content})
