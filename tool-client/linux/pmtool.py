@@ -42,7 +42,7 @@ def main():
 
     r = requests.post(URL, data = data)
     pasteme_url = r.text
-    print("Pastebin Short link is: {0}".format(pasteme_url))
+    print("PasteMe short link is: {0}".format(pasteme_url))
     # sudo cp pmtool.py /usr/local/bin/pmtool
 
 if __name__ == "__main__":
