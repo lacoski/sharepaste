@@ -9,7 +9,7 @@ from .forms import UserLoginForm, UserRegisterForm
 from django.contrib.auth.decorators import user_passes_test
 
 
-def login_view(request):        
+def login_view(request):
     if request.user.is_authenticated:
         return redirect("/")
     form = UserLoginForm(request.POST or None)
@@ -25,12 +25,12 @@ def login_view(request):
         print(request, user.is_authenticated)
         if next:
             return redirect(next)
-        return redirect("/")
+        return redirect("index_page")
     return render(request, 'accounts/login.html', {"form":form})
 
 
 
-def registered_view(request):  
+def registered_view(request):
     if request.user.is_authenticated:
         return redirect("/")
     form = UserRegisterForm(request.POST or None)
@@ -44,7 +44,7 @@ def registered_view(request):
         new_user = authenticate(username=user.username, password=user.password)
         login(request,user)
 
-        return render(request, '/', {"form":form})
+        return redirect("index_page")
     return render(request, 'accounts/registered.html', {"form":form})
 
 def logout_view(request):
