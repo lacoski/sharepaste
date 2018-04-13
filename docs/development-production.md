@@ -83,7 +83,7 @@ vi [project]/pasteme/pasteme/setting.py
 ```
 
 __Lưu ý cấu hình__
-- Database
+- Database (sử dụng mysql)
 
 ```
 DATABASES = {
