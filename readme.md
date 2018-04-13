@@ -33,4 +33,4 @@ Web: http://paste.hocchudong.com/
 
 ### [Triển khai Project tại local](docs/setup-project.md)
 
-### Triển khai Project production (đang viết)
+### [Triển khai Project production](docs/development-production.md)
