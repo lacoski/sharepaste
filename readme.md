@@ -6,6 +6,8 @@ PasteME là một website cho phép người dùng lưu trữ các mẫu văn b�
 
 > Apache, Bash,C#, C++, CSS, CoffeeScript, Diff, HTML, XML, HTTP, Ini, JSON, Java, JavaScript, Makefile, Markdown, Nginx, Objective-C, PHP, Perl, Python, Ruby  SQL, Shell Session
 
+Web: http://paste.hocchudong.com/
+
 ## Hình ảnh minh họa
 ### Trang chủ
 ![](docs/images/trangchu.PNG)
