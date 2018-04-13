@@ -195,6 +195,10 @@ http://[domain]
 ```
 > Lưu ý: allow access tại file setting.py, không truy cập sẽ bị Block
 
+__Nếu lỗi, hoặc không truy cập được trang web__
+- Kiểm tra: `/var/log/httpd/error_log`
+- Lưu ý các `Note` trong bài
+
 ## Nguồn:
 
 https://www.server-world.info/en/note?os=CentOS_7&p=httpd&f=20
