@@ -17,7 +17,6 @@ yum -y install https://centos7.iuscommunity.org/ius-release.rpm
 ### Bước 2: Cài đặt Apache httpd
 ```
 yum install httpd -y
-yum install python36u-mod_wsgi -y
 ```
 ### Bước 3: Cài đặt Mysql
 
@@ -39,6 +38,7 @@ sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
 yum -y install python-devel
 yum -y install python36-devel
 yum -y install python36
+yum install python36u-mod_wsgi -y
 ```
 
 __Kiểm tra vesion__
