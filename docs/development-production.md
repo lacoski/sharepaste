@@ -6,6 +6,12 @@
 ### Bước 1: Cài đặt môi trường
 ```
 yum groupinstall "Development Tools" -y
+
+yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+
+yum -y install python36u
+
+pip3.6 install virtualenv
 ```
 
 > NOTE: disable setenforce
