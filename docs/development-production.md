@@ -9,9 +9,6 @@ yum groupinstall "Development Tools" -y
 
 yum -y install https://centos7.iuscommunity.org/ius-release.rpm
 
-yum -y install python36u
-
-pip3.6 install virtualenv
 ```
 
 > NOTE: disable setenforce
@@ -53,11 +50,16 @@ python3.6 -V
 ```
 yum -y install python-pip
 sudo yum -y install python36u-pip
+
 ```
 
 ### Bước 5: Cài virtualenv Python
 ```
 pip3 install virtualenv
+
+or
+
+pip3.6 install virtualenv
 ```
 
 ## Phần 2: Cấu hình Project
